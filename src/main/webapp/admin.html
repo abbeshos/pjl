@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="pjl">
+<head>
+<link href="styles/bootstrap.min.css" rel="stylesheet">
+<link href="styles/bootstrap-theme.min.css" rel="stylesheet">
+<link href="styles/css.css" rel="stylesheet">
+</head>
+<body ng-controller="MainCtrl">
+
+	<div class="container">
+		<div class="row">Bonjour {{username}}</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<h3>Ajouter une nouvelle ressource</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="input-group">
+					<span class="input-group-addon">Nom</span> <input type="text"
+						class="form-control" ng-model ="name" placeholder="Nom de la ressource" required>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<span class="input-group-addon">Valeur</span> <input type="text"
+						class="form-control" ng-model="value" placeholder="Valeur" required>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+
+			<div class="span12">
+				</br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<button type="button" class="btn btn-default" ng-click="addResource(name, value)">Ajouter</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+				</br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<h3>Supprimer une ressource existante</h3>
+			</div>
+		</div>
+		<div class="row" ng-repeat="res in resources">
+			<div class="col-sm-1 ">
+				<button type="button" class="btn btn-default glyphicon glyphicon-remove" ng-click="removeResource(res.name)"></button>
+ 			</div>
+			<div class="col-sm-3">{{res.name}}</div>
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" aria-valuenow={{res.value}} aria-valuemin="0" aria-valuemax="100" style="width: {{res.value}}%;">
+					{{res.value}}
+				</div>				
+			</div>
+			
+		</div>
+	</div>
+
+
+	<script src="scripts/vendors/angular.min.js"></script>
+	<script src="scripts/vendors/ui-bootstrap-tpls-0.11.0.min.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/websocket.js"></script>
+	<script src="scripts/controllers.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="pjl">
+<head>
+	<link href="styles/bootstrap.min.css" rel="stylesheet">
+	<link href="styles/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="styles/css.css" rel="stylesheet">
+</head>
+<body ng-controller="MainCtrl">
+
+	<div class="container">
+		<div class="row" ng-repeat="resource in resources">
+			<div class="col-sm-1 ">
+				<button type="button" class="btn btn-default glyphicon glyphicon-plus" ng-click="incrementResource(resource.name)"></button>
+			</div>
+			<div class="col-sm-1 ">
+				<button type="button" class="btn btn-default glyphicon glyphicon-minus" ng-click="decrementResource(resource.name)"></button>
+ 			</div>
+			<div class="col-sm-3">{{resource.name}}</div>
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" aria-valuenow={{resource.value}} aria-valuemin="0" aria-valuemax="100" style="width: {{resource.value}}%;">
+					{{resource.value}}
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="scripts/vendors/angular.min.js"></script> 
+<script src="scripts/app.js"></script>
+<script src="scripts/websocket.js"></script>
+<script src="scripts/controllers.js"></script>
+</body>
+</html>
